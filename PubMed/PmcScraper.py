@@ -52,11 +52,13 @@ class PmcScraper:
         articles = soup.find_all("article")
         for article in articles:
             all_sections_of_article = article.find_all("sec")
+            method_section_list = []
             for section in all_sections_of_article:
                 section_title = section.find("title").text.lower()
                 if section_title:
                     if section_to_extract in section_title:
                         text = section.text
                         text = re.sub(r'\s+', ' ', text).strip()
-                        section_text_list.append(text)
+                        method_section_list.append(text)
+            section_text_list.append(" ".join(method_section_list))
         return section_text_list
