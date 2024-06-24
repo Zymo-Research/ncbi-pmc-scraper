@@ -33,7 +33,4 @@ class BiospaceScraper:
             company_names = [company.find("a").text for company in company_items]
             company_names_list.append(company_names)
         return company_names_list
-    
 
-my_scraper = BiospaceScraper("biotechnology")
-print(my_scraper.get_company_names())
